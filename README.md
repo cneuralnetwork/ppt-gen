@@ -6,17 +6,13 @@
 
 ### With npx
 
-Install the skill globally for Codex:
+Install the skill with one command:
 
 ```sh
-npx --yes skills@latest add cneuralnetwork/ppt-gen \
-  --global \
-  --agent codex \
-  --skill ppt-gen \
-  --yes
+npx skills add cneuralnetwork/ppt-gen
 ```
 
-The Skills CLI downloads the public GitHub repository and registers `ppt-gen` with Codex.
+The Skills CLI downloads the public GitHub repository and lets you choose where to install `ppt-gen`.
 
 ### With Git
 
