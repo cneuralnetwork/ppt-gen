@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>PPT Gen intake</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="wordmark" href="#brief-form" aria-label="PPT Gen intake home">PPT<span>·</span>GEN</a>
+      <div class="status" aria-live="polite">
+        <span class="status-mark" aria-hidden="true"></span>
+        <span id="prefill-status">Loading prompt answers</span>
+      </div>
+      <p class="privacy">Localhost only. Nothing leaves this machine.</p>
+    </header>
+
+    <main class="layout">
+      <form id="brief-form" class="brief" novalidate>
+        <div class="form-intro">
+          <h1>Decide what the deck must do.</h1>
+          <p class="intro-copy">Your prompt has filled what it can. Review the decisions below, then lock one visual direction for the entire deck.</p>
+        </div>
+
+        <section aria-labelledby="content-heading">
+          <div class="section-heading">
+            <span>01</span>
+            <div>
+              <h2 id="content-heading">Content and audience</h2>
+              <p>What should remain true after the last slide?</p>
+            </div>
+          </div>
+
+          <div class="fields two-up">
+            <label class="field full">
+              <span>Deck title</span>
+              <input id="title" name="title" autocomplete="off" required placeholder="A precise working title">
+            </label>
+            <label class="field full">
+              <span>Topic</span>
+              <input id="topic" name="topic" autocomplete="off" required placeholder="The subject in one line">
+            </label>
+            <label class="field full">
+              <span>Source content or detailed brief</span>
+              <textarea id="content" name="content" rows="8" required placeholder="Paste the material, argument, outline, notes, or facts the deck must contain."></textarea>
+            </label>
+            <label class="field">
+              <span>Audience</span>
+              <input id="audience" name="audience" autocomplete="off" required placeholder="First-year students, board members...">
+            </label>
+            <label class="field">
+              <span>Purpose</span>
+              <select id="purpose" name="purpose">
+                <option value="educate">Teach or explain</option>
+                <option value="persuade">Persuade</option>
+                <option value="recommend">Recommend a decision</option>
+                <option value="sell">Sell or pitch</option>
+                <option value="facilitate">Facilitate a session</option>
+                <option value="celebrate">Celebrate or entertain</option>
+              </select>
+            </label>
+            <label class="field full">
+              <span>Audience outcome</span>
+              <input id="audience-outcome" name="audienceOutcome" autocomplete="off" required placeholder="They should understand, believe, choose, or do what?">
+            </label>
+            <label class="field">
+              <span>Presenter</span>
+              <input id="presenter" name="presenter" autocomplete="off" placeholder="Optional name or team">
+            </label>
+            <label class="field">
+              <span>Language</span>
+              <input id="language" name="language" autocomplete="off" value="English">
+            </label>
+            <label class="field full">
+              <span>Event or context</span>
+              <input id="context" name="context" autocomplete="off" placeholder="Class, investor meeting, quiz night, conference...">
+            </label>
+          </div>
+        </section>
+
+        <section aria-labelledby="delivery-heading">
+          <div class="section-heading">
+            <span>02</span>
+            <div>
+              <h2 id="delivery-heading">Delivery shape</h2>
+              <p>Set the pace before the deck becomes dense.</p>
+            </div>
+          </div>
+
+          <div class="fields three-up">
+            <label class="field">
+              <span>Slides</span>
+              <input id="slide-count" name="slideCount" type="number" min="3" max="60" value="10" required>
+            </label>
+            <label class="field">
+              <span>Minutes</span>
+              <input id="duration" name="duration" type="number" min="1" max="240" value="12" required>
+            </label>
+            <label class="field">
+              <span>Canvas</span>
+              <select id="aspect-ratio" name="aspectRatio">
+                <option value="16:9">Widescreen 16:9</option>
+                <option value="4:3">Classic 4:3</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Content density</span>
+              <select id="density" name="density">
+                <option value="spacious">Spacious</option>
+                <option value="balanced" selected>Balanced</option>
+                <option value="dense-reference">Dense reference</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Citations</span>
+              <select id="citations" name="citations">
+                <option value="speaker-notes">Speaker notes</option>
+                <option value="visible-footnotes">Visible footnotes</option>
+                <option value="both">Notes and footnotes</option>
+                <option value="none">None</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Research boundary</span>
+              <select id="research" name="research">
+                <option value="provided-only">Provided material only</option>
+                <option value="authoritative-only">Authoritative sources</option>
+                <option value="current-web-allowed">Current web research</option>
+              </select>
+            </label>
+            <label class="check-field full">
+              <input id="speaker-notes" name="speakerNotes" type="checkbox" checked>
+              <span>
+                <strong>Include speaker notes</strong>
+                <small>Add concise delivery support without exposing it on the slide.</small>
+              </span>
+            </label>
+            <label class="field full">
+              <span>Output filename</span>
+              <input id="output-name" name="outputName" autocomplete="off" value="presentation.pptx">
+            </label>
+          </div>
+        </section>
+
+        <section aria-labelledby="style-heading">
+          <div class="section-heading">
+            <span>03</span>
+            <div>
+              <h2 id="style-heading">Art direction</h2>
+              <p>One world, carried through every generated image.</p>
+            </div>
+          </div>
+
+          <fieldset class="choice-group">
+            <legend>Deck character</legend>
+            <div class="choice-grid archetypes">
+              <label><input type="radio" name="archetype" value="academic"><span><strong>Academic</strong><small>Evidence-led and disciplined</small></span></label>
+              <label><input type="radio" name="archetype" value="executive"><span><strong>Executive</strong><small>Decisions and consequences</small></span></label>
+              <label><input type="radio" name="archetype" value="editorial" checked><span><strong>Editorial</strong><small>Authored and narrative</small></span></label>
+              <label><input type="radio" name="archetype" value="workshop"><span><strong>Workshop</strong><small>Participatory and usable</small></span></label>
+              <label><input type="radio" name="archetype" value="playful-quiz"><span><strong>Playful quiz</strong><small>Quick, surprising, bright</small></span></label>
+              <label><input type="radio" name="archetype" value="product-launch"><span><strong>Product launch</strong><small>Artifact-first and confident</small></span></label>
+              <label><input type="radio" name="archetype" value="data-analyst"><span><strong>Data analyst</strong><small>Patterns, proof, precision</small></span></label>
+              <label><input type="radio" name="archetype" value="custom"><span><strong>Custom</strong><small>Describe your own world</small></span></label>
+            </div>
+          </fieldset>
+
+          <div class="fields three-up style-selects">
+            <label class="field">
+              <span>Visual medium</span>
+              <select id="visual-medium" name="visualMedium">
+                <option value="scientific-illustration">Scientific illustration</option>
+                <option value="editorial-photography" selected>Editorial photography</option>
+                <option value="tactile-collage">Tactile collage</option>
+                <option value="paper-cut">Paper construction</option>
+                <option value="painterly">Painterly scene</option>
+                <option value="dimensional">Dimensional render</option>
+                <option value="data-led">Data-led visual</option>
+                <option value="custom">Custom medium</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Palette</span>
+              <select id="palette" name="palette">
+                <option value="mineral-ink">Mineral and ink</option>
+                <option value="forest-clay" selected>Forest and clay</option>
+                <option value="oxblood-paper">Oxblood and paper</option>
+                <option value="monochrome">Tonal monochrome</option>
+                <option value="sunlit-primary">Sunlit primary</option>
+                <option value="custom">Custom palette</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Typography voice</span>
+              <select id="typography" name="typography">
+                <option value="scholarly-humanist">Scholarly humanist</option>
+                <option value="editorial" selected>Editorial</option>
+                <option value="executive">Executive</option>
+                <option value="expressive">Expressive</option>
+                <option value="technical">Technical</option>
+                <option value="custom">Custom typography</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Energy</span>
+              <select id="energy" name="energy">
+                <option value="restrained">Restrained</option>
+                <option value="balanced" selected>Balanced</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Generated imagery</span>
+              <select id="imagery-frequency" name="imageryFrequency">
+                <option value="every-slide">Every slide</option>
+                <option value="frequent" selected>Frequent</option>
+                <option value="selective">Selective hero moments</option>
+              </select>
+            </label>
+            <label class="field full-width-at-three">
+              <span>Reference deck path</span>
+              <input id="reference-deck" name="referenceDeck" autocomplete="off" placeholder="Optional local .pptx path">
+            </label>
+            <label class="field full">
+              <span>Custom direction</span>
+              <textarea id="custom-direction" name="customDirection" rows="3" placeholder="Describe material, era, lighting, image treatment, or a visual world that should guide every slide."></textarea>
+            </label>
+            <label class="field full">
+              <span>Brand assets</span>
+              <textarea id="brand-asset-paths" name="brandAssetPaths" rows="3" placeholder="One local path per line. Real raster logos only; SVG files will never be embedded."></textarea>
+            </label>
+            <label class="field full">
+              <span>Source files</span>
+              <textarea id="source-file-paths" name="sourceFilePaths" rows="3" placeholder="One local path per line for notes, papers, spreadsheets, or other content sources."></textarea>
+            </label>
+          </div>
+
+          <div class="visual-policy">
+            <strong>Visual policy is locked</strong>
+            <p>Storytelling visuals will be generated as PNG, JPEG, or WebP. No stock filler, icon packs, or SVG media will enter the PowerPoint package.</p>
+          </div>
+        </section>
+
+        <div id="form-errors" class="form-errors" role="alert" aria-live="assertive"></div>
+        <button class="submit" type="submit">
+          <span>Lock brief and continue</span>
+          <span aria-hidden="true">↗</span>
+        </button>
+      </form>
+
+      <aside class="proof" aria-labelledby="proof-heading">
+        <div class="proof-header">
+          <p id="proof-heading">Live deck proof</p>
+          <span id="proof-canvas">16:9</span>
+        </div>
+
+        <div id="slide-proof" class="slide-proof">
+          <div class="proof-number">01</div>
+          <div class="proof-copy">
+            <p id="proof-archetype">Editorial deck</p>
+            <h2 id="proof-title">Your presentation title</h2>
+            <p id="proof-audience">Prepared for your audience</p>
+          </div>
+          <div class="proof-footer">
+            <span id="proof-medium">Editorial photography</span>
+            <span id="proof-count">10 slides</span>
+          </div>
+        </div>
+
+        <dl class="proof-list">
+          <div><dt>Purpose</dt><dd id="proof-purpose">Teach or explain</dd></div>
+          <div><dt>Outcome</dt><dd id="proof-outcome">Not set yet</dd></div>
+          <div><dt>Visual system</dt><dd id="proof-style">Forest and clay, balanced</dd></div>
+          <div><dt>Type voice</dt><dd id="proof-type">Editorial</dd></div>
+        </dl>
+
+        <p class="proof-note">This is a brief proof, not a slide template. The final deck will vary its compositions while preserving this art direction.</p>
+      </aside>
+    </main>
+
+    <div id="success" class="success" role="status" aria-live="polite" hidden>
+      <div>
+        <p>Brief locked</p>
+        <h2 tabindex="-1">The deck can now be art-directed.</h2>
+        <p>You can return to Codex. This window may be closed.</p>
+      </div>
+    </div>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>

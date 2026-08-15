@@ -1,0 +1,4 @@
+interface:
+  display_name: "PPT Art Director"
+  short_description: "Brief, art-direct, and verify polished PPTX decks"
+  default_prompt: "Use $ppt-gen to turn my material into a fully art-directed, image-generated PowerPoint deck."
